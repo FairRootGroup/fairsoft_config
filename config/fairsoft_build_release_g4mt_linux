@@ -8,4 +8,4 @@ build_root6=yes
 build_python=no
 install_sim=yes
 build_MQOnly=no
-SIMPATH_INSTALL=/fairsoft_build_mtg4_release
+SIMPATH_INSTALL=/fairsoft_build_g4mt_release
