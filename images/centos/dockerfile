@@ -10,8 +10,8 @@ RUN yum install -y cmake gcc gcc-c++ gcc-gfortran make patch sed \
     automake autoconf libtool which
 RUN yum clean all
 RUN git clone https://github.com/FairRootGroup/fairsoft_config.git && git clone --single-branch --branch RC_Jun19 https://github.com/FairRootGroup/FairSoft.git
-RUN cd FairSoft && ./configure.sh   ../fairsoft_config/config/fairsoft_build_release_linux && rm -rf FairSoft
+RUN cd FairSoft && ./configure.sh   ../fairsoft_config/config/fairsoft_build_release_linux && cd .. && rm -rf FairSoft
 ENV SIMPATH=/fairsoft_build_release
 ENV PATH=$SIMPATH/bin:$PATH
 RUN git clone --single-branch --branch dev https://github.com/FairRootGroup/FairRoot.git && cd FairRoot && mkdir build && cd build && cmake ../ -DCMAKE_INSTALL_PREFIX=/FairRoot_install
-RUN cd FairRoot/build && make -j4 install && rm -rf FairRoot/build
+RUN cd FairRoot/build && make -j4 install && cd .. && rm -rf build
